@@ -1,1 +1,1 @@
-from .networks import CNN
+from .networks import CNN, ResNet

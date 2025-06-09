@@ -29,5 +29,16 @@ class ResNet(nn.Module):
         else:
             raise NotImplementedError(f'Classifier model name \033[92m[net_name]\033[0m is not recognized')
         net.fc = nn.Linear(net.fc.in_features, num_classes)
-        return net
+        
+        self.net = net
     
+    def forward(self, x):
+        """Forward function.
+
+        Parameters:
+            x (tensor) -- input images, of shape (N, C, H, W)
+
+        Returns:
+            tensor -- output of the network, of shape (N, num_classes)
+        """
+        return self.net(x)
